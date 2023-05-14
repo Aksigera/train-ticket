@@ -2,6 +2,7 @@ version: '3'
 services:
 
 #  rabbitmq:
+#    # platform: linux/amd64
 #    image: rabbitmq:management
 #    ports:
 #      - 5672:5672
@@ -11,6 +12,7 @@ services:
 
   # kafka:
   #   container_name: kafka
+#    # platform: linux/amd64
   #   image: spotify/kafka:latest
   #   ports:
   #    - 2181:2181
@@ -19,6 +21,7 @@ services:
   #     - my-network
 
 #  zipkin:
+#    # platform: linux/amd64
 #    image: openzipkin/zipkin
 #    ports:
 #      - 9411:9411
@@ -26,6 +29,7 @@ services:
 #      - my-network
 
   redis:
+    # platform: linux/amd64
     image: redis
     ports:
       - 6379:6379
@@ -33,6 +37,7 @@ services:
       - my-network
 
   ts-ui-dashboard:
+    platform: linux/arm64/v8
     build: ts-ui-dashboard
     restart: always
     ports:
@@ -49,7 +54,10 @@ services:
       - my-network
 
   ts-auth-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -62,7 +70,10 @@ services:
       - my-network
 
   ts-user-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -76,6 +87,7 @@ services:
 
 
 #  ts-account-mongo:
+    # platform: linux/amd64
 #    image: mongo
 #    networks:
 #      - my-network
@@ -89,7 +101,10 @@ services:
       - my-network
 
   ts-route-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
         - my-network
 
@@ -102,9 +117,12 @@ services:
       - my-network
 
   ts-contacts-mysql:
-      image: mysql:5.7
-      networks:
-        - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-order-service:
     build: ts-order-service
@@ -115,7 +133,10 @@ services:
       - my-network
 
   ts-order-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -129,7 +150,10 @@ services:
       - my-network
 
   ts-order-other-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -143,7 +167,10 @@ services:
       - my-network
 
   ts-config-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -156,7 +183,10 @@ services:
       - my-network
 
   ts-station-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -169,7 +199,10 @@ services:
       - my-network
 
   ts-train-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -182,7 +215,10 @@ services:
       - my-network
 
   ts-travel-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -195,9 +231,12 @@ services:
         - my-network
 
   ts-travel2-mysql:
-      image: mysql:5.7
-      networks:
-        - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-preserve-service:
     build: ts-preserve-service
@@ -241,9 +280,12 @@ services:
           - my-network
 
   ts-price-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-notification-service:
         build: ts-notification-service
@@ -254,7 +296,10 @@ services:
           - my-network
 
   ts-notification-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -267,9 +312,12 @@ services:
           - my-network
 
   ts-security-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-inside-payment-service:
         build: ts-inside-payment-service
@@ -280,9 +328,12 @@ services:
           - my-network
 
   ts-inside-payment-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-execute-service:
         build: ts-execute-service
@@ -301,9 +352,12 @@ services:
           - my-network
 
   ts-payment-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-rebook-service:
         build: ts-rebook-service
@@ -314,9 +368,12 @@ services:
           - my-network
 
   ts-rebook-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-cancel-service:
         build: ts-cancel-service
@@ -330,14 +387,17 @@ services:
         build: ts-assurance-service
         restart: always
         ports:
-          - 18888:18888
+          - 18889:18889
         networks:
           - my-network
 
   ts-assurance-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-seat-service:
         build: ts-seat-service
@@ -364,6 +424,7 @@ services:
 #          - my-network
 #
 #  ts-ticket-office-mongo:
+#          # platform: linux/amd64
 #          image: mongo
 #          networks:
 #            - my-network
@@ -377,18 +438,22 @@ services:
       - my-network
 
   ts-news-mysql:
-        image: mysql:5.7
-        networks:
-          - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-voucher-mysql:
-         image: mysql
-         expose:
-            - "3306"
-         environment:
-           MYSQL_ROOT_PASSWORD: root
-         networks:
-           - my-network
+    # platform: linux/amd64
+    image: mysql
+    expose:
+      - "3306"
+    environment:
+     MYSQL_ROOT_PASSWORD: root
+    networks:
+     - my-network
 
   ts-voucher-service:
           build: ts-voucher-service
@@ -411,6 +476,7 @@ services:
 #          - my-network
 #
 #  ts-food-map-mongo:
+#    # platform: linux/amd64
 #          image: mongo
 #          networks:
 #            - my-network
@@ -433,22 +499,28 @@ services:
 
 
   ts-food-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
   ts-consign-service:
-            build: ts-consign-service
-            restart: always
-            ports:
-              - 16111:16111
-            networks:
-              - my-network
+    build: ts-consign-service
+    restart: always
+    ports:
+      - 16111:16111
+    networks:
+      - my-network
 
   ts-consign-mysql:
-            image: mysql:5.7
-            networks:
-              - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
   ts-consign-price-service:
             build: ts-consign-price-service
@@ -459,9 +531,12 @@ services:
               - my-network
 
   ts-consign-price-mysql:
-            image: mysql:5.7
-            networks:
-              - my-network
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - my-network
 
 
   ts-admin-basic-info-service:
@@ -534,7 +609,10 @@ services:
       - my-network
 
   ts-delivery-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -548,7 +626,10 @@ services:
       - my-network
 
   ts-food-delivery-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -562,7 +643,10 @@ services:
       - my-network
 
   ts-gateway-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -575,7 +659,10 @@ services:
       - my-network
 
   ts-station-food-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
@@ -588,12 +675,16 @@ services:
       - my-network
 
   ts-train-food-mysql:
-    image: mysql:5.7
+    # platform: linux/amd64
+    image: mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - my-network
 
 
   jaeger:
+    platform: linux/arm64/v8
     image: jaegertracing/all-in-one:1.15
     ports:
       - 16686:16686

@@ -18,7 +18,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
 server:
-  port: 18888
+  port: 18889
 
 swagger:
   controllerPackage: assurance.controller
