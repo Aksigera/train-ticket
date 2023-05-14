@@ -37,7 +37,7 @@ services:
       - my-network
 
   ts-ui-dashboard:
-    platform: linux/arm64/v8
+    platform: linux/amd64
     build: ts-ui-dashboard
     restart: always
     ports:
