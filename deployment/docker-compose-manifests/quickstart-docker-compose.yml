@@ -402,18 +402,18 @@ services:
           networks:
             - my-network
 
-#  ts-food-map-service:
-#        image: ${NAMESPACE}/ts-food-map-service:${TAG}
-#        restart: always
-#        ports:
-#          - 18855:18855
-#        networks:
-#          - my-network
-#
-#  ts-food-map-mongo:
-#          image: mongo
-#          networks:
-#            - my-network
+  ts-food-map-service:
+        image: ${NAMESPACE}/ts-food-map-service:${TAG}
+        restart: always
+        ports:
+          - 18855:18855
+        networks:
+          - my-network
+
+  ts-food-map-mongo:
+          image: mongo
+          networks:
+            - my-network
 
   ts-route-plan-service:
           image: ${NAMESPACE}/ts-route-plan-service:${TAG}
@@ -594,8 +594,3 @@ networks:
     my-network:
       # driver: overlay
       driver: bridge
-
-
-
-
-

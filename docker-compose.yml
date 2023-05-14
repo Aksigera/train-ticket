@@ -1,13 +1,13 @@
-version: "3"
-
+version: '3'
 services:
-  #  rabbitmq:
-  #    image: rabbitmq:management
-  #    ports:
-  #      - 5672:5672
-  #      - 15672:15672
-  #    networks:
-  #      - my-network
+
+#  rabbitmq:
+#    image: rabbitmq:management
+#    ports:
+#      - 5672:5672
+#      - 15672:15672
+#    networks:
+#      - my-network
 
   # kafka:
   #   container_name: kafka
@@ -18,12 +18,12 @@ services:
   #   networks:
   #     - my-network
 
-  #  zipkin:
-  #    image: openzipkin/zipkin
-  #    ports:
-  #      - 9411:9411
-  #    networks:
-  #      - my-network
+#  zipkin:
+#    image: openzipkin/zipkin
+#    ports:
+#      - 9411:9411
+#    networks:
+#      - my-network
 
   redis:
     image: redis
@@ -33,8 +33,7 @@ services:
       - my-network
 
   ts-ui-dashboard:
-    build: ts-ui-dashboard
-    image: ${IMG_REPO}/ts-ui-dashboard:${IMG_TAG}
+    image: codewisdom/ts-ui-dashboard-with-jaeger:v1
     restart: always
     ports:
       - 8080:8080
@@ -42,176 +41,166 @@ services:
       - my-network
 
   ts-auth-service:
-    build: ts-auth-service
-    image: ${IMG_REPO}/ts-auth-service:${IMG_TAG}
+    image: codewisdom/ts-auth-service-with-jaeger:v1
     restart: always
     ports:
       - 12340:12340
     networks:
       - my-network
 
-  ts-auth-mongo:
-    image: mongo
+  ts-auth-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-user-service:
-    build: ts-user-service
-    image: ${IMG_REPO}/ts-user-service:${IMG_TAG}
+    image: codewisdom/ts-user-service-with-jaeger:v1
     restart: always
     ports:
       - 12342:12342
     networks:
       - my-network
 
-  ts-user-mongo:
-    image: mongo
+  ts-user-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-verification-code-service:
-    build: ts-verification-code-service
-    image: ${IMG_REPO}/ts-verification-code-service:${IMG_TAG}
+    image: codewisdom/ts-verification-code-service-with-jaeger:v1
     restart: always
     ports:
       - 15678:15678
     networks:
       - my-network
 
-  ts-account-mongo:
-    image: mongo
-    networks:
-      - my-network
+
+#  ts-account-mongo:
+#    image: mongo
+#    networks:
+#      - my-network
 
   ts-route-service:
-    build: ts-route-service
-    image: ${IMG_REPO}/ts-route-service:${IMG_TAG}
+    image: codewisdom/ts-route-service-with-jaeger:v1
     restart: always
     ports:
-      - 11178:11178
+         - 11178:11178
     networks:
       - my-network
 
-  ts-route-mongo:
-    image: mongo
+  ts-route-mysql:
+    image: mysql:5.7
     networks:
-      - my-network
+        - my-network
 
   ts-contacts-service:
-    build: ts-contacts-service
-    image: ${IMG_REPO}/ts-contacts-service:${IMG_TAG}
+    image: codewisdom/ts-contacts-service-with-jaeger:v1
     restart: always
     ports:
       - 12347:12347
     networks:
       - my-network
 
-  ts-contacts-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-contacts-mysql:
+      image: mysql:5.7
+      networks:
+        - my-network
 
   ts-order-service:
-    build: ts-order-service
-    image: ${IMG_REPO}/ts-order-service:${IMG_TAG}
+    image: codewisdom/ts-order-service-with-jaeger:v1
     restart: always
     ports:
       - 12031:12031
     networks:
       - my-network
 
-  ts-order-mongo:
-    image: mongo
+  ts-order-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
+
   ts-order-other-service:
-    build: ts-order-other-service
-    image: ${IMG_REPO}/ts-order-other-service:${IMG_TAG}
+    image: codewisdom/ts-order-other-service-with-jaeger:v1
     restart: always
     ports:
       - 12032:12032
     networks:
       - my-network
 
-  ts-order-other-mongo:
-    image: mongo
+  ts-order-other-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
+
   ts-config-service:
-    build: ts-config-service
-    image: ${IMG_REPO}/ts-config-service:${IMG_TAG}
+    image: codewisdom/ts-config-service-with-jaeger:v1
     restart: always
     ports:
       - 15679:15679
     networks:
       - my-network
 
-  ts-config-mongo:
-    image: mongo
+  ts-config-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-station-service:
-    build: ts-station-service
-    image: ${IMG_REPO}/ts-station-service:${IMG_TAG}
+    image: codewisdom/ts-station-service-with-jaeger:v1
     restart: always
     ports:
       - 12345:12345
     networks:
       - my-network
 
-  ts-station-mongo:
-    image: mongo
+  ts-station-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-train-service:
-    build: ts-train-service
-    image: ${IMG_REPO}/ts-train-service:${IMG_TAG}
+    image: codewisdom/ts-train-service-with-jaeger:v1
     restart: always
     ports:
       - 14567:14567
     networks:
       - my-network
 
-  ts-train-mongo:
-    image: mongo
+  ts-train-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-travel-service:
-    build: ts-travel-service
-    image: ${IMG_REPO}/ts-travel-service:${IMG_TAG}
+    image: codewisdom/ts-travel-service-with-jaeger:v1
     restart: always
     ports:
       - 12346:12346
     networks:
       - my-network
 
-  ts-travel-mongo:
-    image: mongo
+  ts-travel-mysql:
+    image: mysql:5.7
     networks:
       - my-network
 
   ts-travel2-service:
-      build: ts-travel2-service
-      image: ${IMG_REPO}/ts-travel2-service:${IMG_TAG}
+      image: codewisdom/ts-travel2-service-with-jaeger:v1
       restart: always
       ports:
         - 16346:16346
       networks:
         - my-network
 
-  ts-travel2-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-travel2-mysql:
+      image: mysql:5.7
+      networks:
+        - my-network
 
   ts-preserve-service:
-    build: ts-preserve-service
-    image: ${IMG_REPO}/ts-preserve-service:${IMG_TAG}
+    image: codewisdom/ts-preserve-service-with-jaeger:v1
     restart: always
     ports:
       - 14568:14568
@@ -219,87 +208,84 @@ services:
       - my-network
 
   ts-preserve-other-service:
-    build: ts-preserve-other-service
-    image: ${IMG_REPO}/ts-preserve-other-service:${IMG_TAG}
+    image: codewisdom/ts-preserve-other-service-with-jaeger:v1
     restart: always
     ports:
       - 14569:14569
     networks:
       - my-network
 
+
   ts-basic-service:
-      build: ts-basic-service
-      image: ${IMG_REPO}/ts-basic-service:${IMG_TAG}
+      image: codewisdom/ts-basic-service-with-jaeger:v1
       restart: always
       ports:
         - 15680:15680
       networks:
           - my-network
 
-  ts-ticketinfo-service:
-        build: ts-ticketinfo-service
-        image: ${IMG_REPO}/ts-ticketinfo-service:${IMG_TAG}
-        restart: always
-        ports:
-          - 15681:15681
-        networks:
-          - my-network
+#  ts-ticketinfo-service:
+#        image: codewisdom/ts-ticketinfo-service-with-jaeger:v1
+#        restart: always
+#        ports:
+#          - 15681:15681
+#        networks:
+#          - my-network
 
   ts-price-service:
-        build: ts-price-service
-        image: ${IMG_REPO}/ts-price-service:${IMG_TAG}
+        image: codewisdom/ts-price-service-with-jaeger:v1
         restart: always
         ports:
           - 16579:16579
         networks:
           - my-network
 
-
-  ts-price-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-price-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-notification-service:
-        build: ts-notification-service
-        image: ${IMG_REPO}/ts-notification-service:${IMG_TAG}
+        image: codewisdom/ts-notification-service-with-jaeger:v1
         restart: always
         ports:
           - 17853:17853
         networks:
           - my-network
 
+  ts-notification-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
   ts-security-service:
-        build: ts-security-service
-        image: ${IMG_REPO}/ts-security-service:${IMG_TAG}
+        image: codewisdom/ts-security-service-with-jaeger:v1
         restart: always
         ports:
           - 11188:11188
         networks:
           - my-network
 
-  ts-security-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-security-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-inside-payment-service:
-        build: ts-inside-payment-service
-        image: ${IMG_REPO}/ts-inside-payment-service:${IMG_TAG}
+        image: codewisdom/ts-inside-payment-service-with-jaeger:v1
         restart: always
         ports:
           - 18673:18673
         networks:
           - my-network
 
-  ts-inside-payment-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-inside-payment-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-execute-service:
-        build: ts-execute-service
-        image: ${IMG_REPO}/ts-execute-service:${IMG_TAG}
+        image: codewisdom/ts-execute-service-with-jaeger:v1
         restart: always
         ports:
           - 12386:12386
@@ -307,36 +293,33 @@ services:
           - my-network
 
   ts-payment-service:
-        build: ts-payment-service
-        image: ${IMG_REPO}/ts-payment-service:${IMG_TAG}
+        image: codewisdom/ts-payment-service-with-jaeger:v1
         restart: always
         ports:
           - 19001:19001
         networks:
           - my-network
 
-  ts-payment-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-payment-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-rebook-service:
-        build: ts-rebook-service
-        image: ${IMG_REPO}/ts-rebook-service:${IMG_TAG}
+        image: codewisdom/ts-rebook-service-with-jaeger:v1
         restart: always
         ports:
           - 18886:18886
         networks:
           - my-network
 
-  ts-rebook-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-rebook-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-cancel-service:
-        build: ts-cancel-service
-        image: ${IMG_REPO}/ts-cancel-service:${IMG_TAG}
+        image: codewisdom/ts-cancel-service-with-jaeger:v1
         restart: always
         ports:
           - 18885:18885
@@ -344,22 +327,20 @@ services:
           - my-network
 
   ts-assurance-service:
-        build: ts-assurance-service
-        image: ${IMG_REPO}/ts-assurance-service:${IMG_TAG}
+        image: codewisdom/ts-assurance-service-with-jaeger:v1
         restart: always
         ports:
           - 18888:18888
         networks:
           - my-network
 
-  ts-assurance-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-assurance-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-seat-service:
-        build: ts-seat-service
-        image: ${IMG_REPO}/ts-seat-service:${IMG_TAG}
+        image: codewisdom/ts-seat-service-with-jaeger:v1
         restart: always
         ports:
           - 18898:18898
@@ -367,54 +348,50 @@ services:
           - my-network
 
   ts-travel-plan-service:
-        build: ts-travel-plan-service
-        image: ${IMG_REPO}/ts-travel-plan-service:${IMG_TAG}
+        image: codewisdom/ts-travel-plan-service-with-jaeger:v1
         restart: always
         ports:
           - 14322:14322
         networks:
           - my-network
 
-  ts-ticket-office-service:
-        build: ts-ticket-office-service
-        image: ${IMG_REPO}/ts-ticket-office-service:${IMG_TAG}
-        restart: always
-        ports:
-          - 16108:16108
-        networks:
-          - my-network
-
-  ts-ticket-office-mongo:
-    image: mongo
-    networks:
-      - my-network
+#  ts-ticket-office-service:
+#        image: codewisdom/ts-ticket-office-service-with-jaeger:v1
+#        restart: always
+#        ports:
+#          - 16108:16108
+#        networks:
+#          - my-network
+#
+#  ts-ticket-office-mongo:
+#          image: mongo
+#          networks:
+#            - my-network
 
   ts-news-service:
-    build: ts-news-service
-    image: ${IMG_REPO}/ts-news-service:${IMG_TAG}
+    image: codewisdom/ts-news-service-with-jaeger:v1
     restart: always
     ports:
       - 12862:12862
     networks:
       - my-network
 
-  ts-news-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-news-mysql:
+        image: mysql:5.7
+        networks:
+          - my-network
 
   ts-voucher-mysql:
-    image: mysql
-    expose:
-      - "3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    networks:
-      - my-network
+         image: mysql
+         expose:
+            - "3306"
+         environment:
+           MYSQL_ROOT_PASSWORD: root
+         networks:
+           - my-network
 
   ts-voucher-service:
-          build: ts-voucher-service
-          image: ${IMG_REPO}/ts-voucher-service:${IMG_TAG}
+          image: codewisdom/ts-voucher-service-with-jaeger:v1
           restart: always
           ports:
             - 16101:16101
@@ -425,23 +402,21 @@ services:
           networks:
             - my-network
 
-  ts-food-map-service:
-        build: ts-food-map-service
-        image: ${IMG_REPO}/ts-food-map-service:${IMG_TAG}
-        restart: always
-        ports:
-          - 18855:18855
-        networks:
-          - my-network
-
-  ts-food-map-mongo:
-    image: mongo
-    networks:
-      - my-network
+#  ts-food-map-service:
+#        image: codewisdom/ts-food-map-service-with-jaeger:v1
+#        restart: always
+#        ports:
+#          - 18855:18855
+#        networks:
+#          - my-network
+#
+#  ts-food-map-mongo:
+#          image: mongo
+#          networks:
+#            - my-network
 
   ts-route-plan-service:
-          build: ts-route-plan-service
-          image: ${IMG_REPO}/ts-route-plan-service:${IMG_TAG}
+          image: codewisdom/ts-route-plan-service-with-jaeger:v1
           restart: always
           ports:
             - 14578:14578
@@ -449,50 +424,48 @@ services:
             - my-network
 
   ts-food-service:
-      build: ts-food-service
-      image: ${IMG_REPO}/ts-food-service:${IMG_TAG}
+      image: codewisdom/ts-food-service-with-jaeger:v1
       restart: always
       ports:
         - 18856:18856
       networks:
         - my-network
 
+
+  ts-food-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
   ts-consign-service:
-            build: ts-consign-service
-            image: ${IMG_REPO}/ts-consign-service:${IMG_TAG}
+            image: codewisdom/ts-consign-service-with-jaeger:v1
             restart: always
             ports:
               - 16111:16111
             networks:
               - my-network
 
-  ts-consign-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-consign-mysql:
+            image: mysql:5.7
+            networks:
+              - my-network
 
   ts-consign-price-service:
-            build: ts-consign-price-service
-            image: ${IMG_REPO}/ts-consign-price-service:${IMG_TAG}
+            image: codewisdom/ts-consign-price-service-with-jaeger:v1
             restart: always
             ports:
               - 16110:16110
             networks:
               - my-network
 
-  ts-consign-price-mongo:
-    image: mongo
-    networks:
-      - my-network
+  ts-consign-price-mysql:
+            image: mysql:5.7
+            networks:
+              - my-network
 
-  ts-food-mongo:
-    image: mongo
-    networks:
-      - my-network
 
   ts-admin-basic-info-service:
-        build: ts-admin-basic-info-service
-        image: ${IMG_REPO}/ts-admin-basic-info-service:${IMG_TAG}
+        image: codewisdom/ts-admin-basic-info-service-with-jaeger:v1
         restart: always
         ports:
           - 18767:18767
@@ -500,8 +473,7 @@ services:
           - my-network
 
   ts-admin-order-service:
-            build: ts-admin-order-service
-            image: ${IMG_REPO}/ts-admin-order-service:${IMG_TAG}
+            image: codewisdom/ts-admin-order-service-with-jaeger:v1
             restart: always
             ports:
               - 16112:16112
@@ -509,8 +481,7 @@ services:
               - my-network
 
   ts-admin-route-service:
-              build: ts-admin-route-service
-              image: ${IMG_REPO}/ts-admin-route-service:${IMG_TAG}
+              image: codewisdom/ts-admin-route-service-with-jaeger:v1
               restart: always
               ports:
                 - 16113:16113
@@ -522,8 +493,7 @@ services:
                 - my-network
 
   ts-admin-travel-service:
-                build: ts-admin-travel-service
-                image: ${IMG_REPO}/ts-admin-travel-service:${IMG_TAG}
+                image: codewisdom/ts-admin-travel-service-with-jaeger:v1
                 restart: always
                 ports:
                   - 16114:16114
@@ -535,8 +505,7 @@ services:
                   - my-network
 
   ts-admin-user-service:
-    build: ts-admin-user-service
-    image: ${IMG_REPO}/ts-admin-user-service:${IMG_TAG}
+    image: codewisdom/ts-admin-user-service-with-jaeger:v1
     restart: always
     ports:
       - 16115:16115
@@ -548,14 +517,100 @@ services:
       - my-network
 
   ts-avatar-service:
-    image: ${NAMESPACE}/ts-avatar-service:${TAG}
+    image: codewisdom/ts-avatar-service-with-jaeger:v1
     restart: always
     ports:
       - 17001:17001
     networks:
       - my-network
 
+
+  ts-delivery-service:
+    image: ${NAMESPACE}/ts-delivery-servicee-with-jaeger:v1
+    restart: always
+    ports:
+      - 18808:18808
+    networks:
+      - my-network
+
+  ts-delivery-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
+
+  ts-food-delivery-service:
+    image: ${NAMESPACE}/ts-food-delivery-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 18957:18957
+    networks:
+      - my-network
+
+  ts-food-delivery-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
+
+  ts-gateway-service:
+    image: ${NAMESPACE}/ts-gateway-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 18888:18888
+    networks:
+      - my-network
+
+  ts-gateway-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
+  ts-station-food-service:
+    image: ${NAMESPACE}/ts-station-food-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 18855:18855
+    networks:
+      - my-network
+
+  ts-station-food-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
+  ts-train-food-service:
+    image: ${NAMESPACE}/ts-train-food-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 19999:19999
+    networks:
+      - my-network
+
+  ts-train-food-mysql:
+    image: mysql:5.7
+    networks:
+      - my-network
+
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.15
+    ports:
+      - 16686:16686
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
+
+
 networks:
-  my-network:
-    # driver: overlay
-    driver: bridge
+    my-network:
+      # driver: overlay
+      driver: bridge
+
+
+
+
+
