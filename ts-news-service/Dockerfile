@@ -1,11 +1,12 @@
+# syntax=docker/dockerfile:1
+
 FROM golang
 
-RUN go get github.com/hoisie/web
-
-RUN mkdir -p /app
 WORKDIR /app
 
-ADD ./src/main/main.go /app/
+ADD ./main.go  /app/
+ADD ./go.mod /app/
+
 RUN go build
 CMD [ "./app" ]
 
