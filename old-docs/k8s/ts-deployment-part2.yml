@@ -814,7 +814,7 @@ spec:
         image: 10.141.211.160:5000/master/cluster-ts-voucher-service
         imagePullPolicy: Always
         ports:
-        - containerPort: 16101
+        - containerPort: 16102
 
 ---
 
@@ -1347,6 +1347,6 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 16101
+      port: 16102
   selector:
    app: ts-voucher-service

@@ -1424,7 +1424,7 @@ spec:
         image: codewisdom/ts-voucher-service:0.0.4
         imagePullPolicy: Always
         ports:
-        - containerPort: 16101
+        - containerPort: 16102
         resources:
           requests:
             cpu: 50m
@@ -1434,7 +1434,7 @@ spec:
             memory: 500Mi
         readinessProbe:
           tcpSocket:
-            port: 16101
+            port: 16102
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
@@ -1993,7 +1993,7 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 16101
+      port: 16102
   selector:
    app: ts-voucher-service
 

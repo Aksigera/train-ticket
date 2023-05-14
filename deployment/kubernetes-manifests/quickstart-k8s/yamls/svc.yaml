@@ -469,7 +469,7 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 16101
+      port: 16102
   selector:
     app: ts-voucher-service
 ---

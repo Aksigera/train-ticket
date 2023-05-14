@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 ADD ./server.py /app/
 CMD [ "python", "server.py" ]
 
-EXPOSE 16101
+EXPOSE 16102

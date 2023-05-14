@@ -310,7 +310,7 @@ spec:
     - destination:
         host: ts-voucher-service
         port:
-          number: 16101
+          number: 16102
   - match:
     - uri:
         prefix: /api/v1/routeplanservice

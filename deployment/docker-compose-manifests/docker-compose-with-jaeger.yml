@@ -394,7 +394,7 @@ services:
           image: codewisdom/ts-voucher-service-with-jaeger:v1
           restart: always
           ports:
-            - 16101:16101
+            - 16102:16102
           depends_on:
             - ts-voucher-mysql
           volumes:
@@ -609,8 +609,3 @@ networks:
     my-network:
       # driver: overlay
       driver: bridge
-
-
-
-
-

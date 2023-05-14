@@ -394,7 +394,7 @@ services:
           image: ${NAMESPACE}/ts-voucher-service:${TAG}
           restart: always
           ports:
-            - 16101:16101
+            - 16102:16102
           depends_on:
             - ts-voucher-mysql
           volumes:

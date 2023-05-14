@@ -15,4 +15,4 @@ spec:
         image: kylinxiang/ts-voucher-service:f1.1
         imagePullPolicy: Always
         ports:
-        - containerPort: 16101
+        - containerPort: 16102
