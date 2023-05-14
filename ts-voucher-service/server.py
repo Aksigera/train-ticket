@@ -101,7 +101,18 @@ def make_app():
         (r"/getVoucher", GetVoucherHandler)
     ])
 
+def createDb():
+    connect = pymysql.connect(**mysql_config)
+    with connect.cursor() as cur:
+        cur.execute('create database IF NOT EXISTS ts_voucher_mysql;')
+
+    mysql_config['db'] = 'ts_voucher_mysql'
+
+    connect.close()
+
 def initDatabase():
+    createDb()
+
     # Create a connection
     print(mysql_config)
     connect = pymysql.connect(**mysql_config)
@@ -149,7 +160,7 @@ def initMysqlConfig():
         'host': host,
         'port': port,
         'user': user,
-        'db': db
+        # 'db': db
     }
 
 
