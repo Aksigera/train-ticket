@@ -1,5 +1,6 @@
-FROM mrrm/web.go
+FROM golang
 
+RUN go get github.com/hoisie/web
 
 RUN mkdir -p /app
 WORKDIR /app
