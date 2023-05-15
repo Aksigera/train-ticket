@@ -552,6 +552,7 @@ services:
             restart: always
             ports:
               - 16112:16112
+              - 9849:9848
             networks:
               - my-network
 
